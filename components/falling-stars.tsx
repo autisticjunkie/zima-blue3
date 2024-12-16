@@ -23,8 +23,8 @@ export function FallingStars() {
       color: string
 
       constructor(isStarDust: boolean) {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * (canvas?.width ?? window.innerWidth)
+        this.y = Math.random() * (canvas?.height ?? window.innerHeight)
         this.size = isStarDust ? Math.random() * 0.5 + 0.1 : Math.random() * 1 + 0.5
         this.speed = Math.random() * 0.5 + 0.1
         this.color = isStarDust ? '#ffffff' : '#4ff2ff'
@@ -32,9 +32,9 @@ export function FallingStars() {
 
       fall() {
         this.y += this.speed
-        if (this.y > canvas.height) {
+        if (this.y > (canvas?.height ?? window.innerHeight)) {
           this.y = 0
-          this.x = Math.random() * canvas.width
+          this.x = Math.random() * (canvas?.width ?? window.innerWidth)
         }
       }
 
